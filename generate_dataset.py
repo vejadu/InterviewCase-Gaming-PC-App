@@ -72,9 +72,9 @@ def generate():
                     cancelled = True
 
                 row = {
-                    "date": current.strftime("%-m/%-d/%Y"),
+                    "date": f"{current.month}/{current.day}/{current.year}",
                     "userid": userid,
-                    "startdate": start.strftime("%-m/%-d/%Y"),
+                    "startdate": f"{start.month}/{start.day}/{start.year}",
                     "plan": "Paid" if paid else "Free",
                     "Status": "Cancelled" if cancelled else "Active",
                     "DayOfWeek": current.strftime("%A"),

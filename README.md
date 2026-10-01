@@ -25,7 +25,7 @@ The complete, synthetic dataset is in `contoso_gaming_pc_app_output.csv` (300 pl
 
 Plan and billing status reflect the **end of the recorded day**. A Free-to-Paid change first appears on the upgrade day; `Cancelled` appears on the final recorded Paid day and never on a Free row. Feature counts include successful and failed interactions and respect the per-plan daily limits below. This is generated example data, not evidence of causal effects or actual customer behavior.
 
-To regenerate the CSV deterministically, run `python generate_dataset.py` (Python standard library only). Column names are kept generic; see the mapping below.
+To regenerate the CSV deterministically, run `python generate_dataset.py`; to check its consistency, run `python -m unittest test_dataset` (Python standard library only). Column names are kept generic; see the mapping below.
 
 ### Data Dictionary
 
