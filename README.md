@@ -1,76 +1,76 @@
 # InterviewCase_Gaming_PC_App
 Example data. Not real data.
 
-# Contoso Gaming PC App: Growth Modeling Assignment
+# Contoso AI Gaming Companion (PC): Growth Modeling Assignment
 
 ## Executive Summary
 
-Contoso Gaming PC App is a desktop application focused on the gaming PC user experience, including performance optimization, game launcher workflows, and AI-assisted setup/support features. The product team is seeking ways to grow the business and improve the product by leveraging user activity data and feature usage patterns.
+Contoso AI Gaming Companion is an AI-powered PC gaming app (think an Xbox-style companion for PC players). It uses AI to help players get better performance, get unstuck in games, and automate tedious setup tasks so they spend more time playing. The product team is seeking ways to grow the business and improve the product by leveraging player activity data and AI feature usage patterns.
 
 ---
 
 ## 1. Product Overview
 
-Contoso Gaming PC App offers three core features:
+Contoso AI Gaming Companion offers three core AI features:
 
-- **AutoTune**: AI-assisted recommendations for game and system settings (graphics presets, performance profiles, compatibility tweaks).
-- **Chat**: An in-app assistant for plain-language support, troubleshooting, and optimization guidance.
-- **Agent**: An automation assistant that can apply app-level configuration changes and guided setup actions.
+- **AI Game Optimizer**: Real-time AI suggestions while you play — recommended graphics settings, FPS/latency tweaks, and per-game performance profiles, similar to autocomplete but for your game settings.
+- **AI Game Coach (Chat)**: An in-game overlay where players ask plain-language questions and get answers — strategy tips, quest/boss help, loadout advice, and troubleshooting, similar to ChatGPT for gaming.
+- **AI Game Agent**: An overlay where players give a prompt and the AI takes action on their behalf — installing/updating games and mods, fixing driver or crash issues, setting up controllers, or creating clips and highlights from a session.
 
 ---
 
 ## 2. Data
 
-Complete dataset in the .csv file in this repository.
+Complete dataset in the .csv file in this repository (`contoso_gaming_pc_app_output.csv`). Column names are kept generic; see the mapping below.
 
 ### Data Dictionary
 
 | Column Name                | Definition                                                        |
 |----------------------------|-------------------------------------------------------------------|
-| `date`                     | Day of event activity                                             |
-| `userid`                   | Anonymized user identifier tied to a user profile                 |
-| `startdate`                | First day the userid has activity in the product                  |
-| `plan`                     | Either “Free” or “Paid”                                           |
+| `date`                     | Day of player activity                                            |
+| `userid`                   | Anonymized player identifier tied to a player profile             |
+| `startdate`                | First day the player has activity in the app                      |
+| `plan`                     | Either “Free” or “Paid” (premium subscription)                    |
 | `Status`                   | Either “Active” or “Cancelled” from the billing system at day end |
 | `DayOfWeek`                | Day of the week for the `date` column                             |
 | `Weekend`                  | Boolean: whether the day is a weekend                             |
 | `DaysSinceStart`           | Days between `date` and `startdate`                               |
-| `AI_AutoComplete_Success`  | Successful AutoTune interactions                                  |
-| `AI_AutoComplete_Error`    | AutoTune interactions with errors                                 |
-| `AI_Chat_Success`          | Successful Chat interactions                                      |
-| `AI_Chat_Error`            | Chat interactions with errors                                     |
-| `AI_Agent_Success`         | Successful Agent interactions                                     |
-| `AI_Agent_Error`           | Agent interactions with errors                                    |
+| `AI_AutoComplete_Success`  | Successful AI Game Optimizer suggestions applied                  |
+| `AI_AutoComplete_Error`    | AI Game Optimizer interactions with errors                        |
+| `AI_Chat_Success`          | Successful AI Game Coach (Chat) interactions                      |
+| `AI_Chat_Error`            | AI Game Coach (Chat) interactions with errors                     |
+| `AI_Agent_Success`         | Successful AI Game Agent actions                                  |
+| `AI_Agent_Error`           | AI Game Agent actions with errors                                 |
 
 ---
 
 ## 3. Feature Usage Limits
 
-Feature usage limits by plan:
+AI feature usage limits by plan:
 
-| Plan   | AutoTune (per day) | Chat (per day) | Agent (per day) |
-|--------|---------------------|----------------|-----------------|
-| Free   | 100                 | 10             | 5               |
-| Paid   | 200                 | 50             | 20              |
+| Plan   | AI Game Optimizer (per day) | AI Game Coach (per day) | AI Game Agent (per day) |
+|--------|-----------------------------|-------------------------|-------------------------|
+| Free   | 100                         | 10                      | 5                       |
+| Paid   | 200                         | 50                      | 20                      |
 
 ---
 
 ## 4. Modeling Assignment
 
-You are tasked with using daily activity data for user accounts created between **3/3/2025 and 3/7/2025**, covering the next 60 days, to inform product strategy. Use the .csv file in this repository.
+You are tasked with using daily activity data for player accounts created between **3/3/2025 and 3/7/2025**, covering the next 60 days, to inform product strategy. Use the .csv file in this repository.
 
 ### Analysis Goals
 Mandatory questions to answer:
-- How many new Free and Paid accounts were created in the week of 3/3-3/7?
-- How many accounts are still using the product in the following days and weeks? What is our retention rate?
-- How many Free accounts upgraded to paid? What is our conversion rate?
-- How many of our Paid accounts have cancelled?
+- How many new Free and Paid player accounts were created in the week of 3/3-3/7?
+- How many players are still using the app in the following days and weeks? What is our retention rate?
+- How many Free players upgraded to Paid? What is our conversion rate?
+- How many of our Paid players have cancelled?
 
 Additional questions the product team might be interested in (not in priority order):
-- What is the relationship between feature usage and product retention or conversion to paid?
-- What is the relationship between feature errors and product retention or conversion to paid?
-- Do we observe distinct differences in user behavior between different user groups?
-- When are users most likely to convert? What does their user behavioral journey look like?
+- What is the relationship between AI feature usage and retention or conversion to Paid?
+- What is the relationship between AI feature errors and retention or conversion to Paid?
+- Do we observe distinct differences in behavior between player groups (e.g., weekend vs. weekday players, heavy Optimizer users vs. heavy Coach users)?
+- When are players most likely to convert? What does their journey look like?
 - Any other insights or recommendations you have.
 
 ---
