@@ -21,7 +21,11 @@ Contoso AI Gaming Companion offers three core AI features:
 
 ## 2. Data
 
-Complete dataset in the .csv file in this repository (`contoso_gaming_pc_app_output.csv`). Column names are kept generic; see the mapping below.
+The complete, synthetic dataset is in `contoso_gaming_pc_app_output.csv` (300 players, 60 starting on each day from March 3 through March 7, 2025). It contains one row per day **with app activity**, from each player's start day through at most day 59. A missing player-day means no observed activity, not necessarily cancellation; there are no rows after a recorded cancellation. Each player has a day-0 row. The last possible observation is May 5, 2025.
+
+Plan and billing status reflect the **end of the recorded day**. A Free-to-Paid change first appears on the upgrade day; `Cancelled` appears on the final recorded Paid day and never on a Free row. Feature counts include successful and failed interactions and respect the per-plan daily limits below. This is generated example data, not evidence of causal effects or actual customer behavior.
+
+To regenerate the CSV deterministically, run `python generate_dataset.py`; to check its consistency, run `python -m unittest test_dataset` (Python standard library only). Column names are kept generic; see the mapping below.
 
 ### Data Dictionary
 
@@ -29,9 +33,9 @@ Complete dataset in the .csv file in this repository (`contoso_gaming_pc_app_out
 |----------------------------|-------------------------------------------------------------------|
 | `date`                     | Day of player activity                                            |
 | `userid`                   | Anonymized player identifier tied to a player profile             |
-| `startdate`                | First day the player has activity in the app                      |
+| `startdate`                | First day the player has activity in the app (cohort date)        |
 | `plan`                     | Either “Free” or “Paid” (premium subscription)                    |
-| `Status`                   | Either “Active” or “Cancelled” from the billing system at day end |
+| `Status`                   | “Active” or “Cancelled” from the billing system at day end; cancellation only occurs on a Paid row |
 | `DayOfWeek`                | Day of the week for the `date` column                             |
 | `Weekend`                  | Boolean: whether the day is a weekend                             |
 | `DaysSinceStart`           | Days between `date` and `startdate`                               |
@@ -57,7 +61,7 @@ AI feature usage limits by plan:
 
 ## 4. Modeling Assignment
 
-You are tasked with using daily activity data for player accounts created between **3/3/2025 and 3/7/2025**, covering the next 60 days, to inform product strategy. Use the .csv file in this repository.
+You are tasked with using daily activity data for player accounts created between **3/3/2025 and 3/7/2025**, covering each player's first 60 days (day 0–59), to inform product strategy. Use the .csv file in this repository. When calculating retention, use the day-0 cohort as the denominator and distinguish “active on day N” from “active at any point during week N.” An absent row is not itself proof of cancellation.
 
 ### Analysis Goals
 Mandatory questions to answer:
