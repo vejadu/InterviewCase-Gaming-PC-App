@@ -1,0 +1,4 @@
+date,userid,startdate,plan,Status,DayOfWeek,Weekend,DaysSinceStart,AI_AutoComplete_Success,AI_Chat_Success,AI_Agent_Success,AI_AutoComplete_Error,AI_Chat_Error,AI_Agent_Error
+3/3/2025,66755036,3/3/2025,Free,Active,Monday,False,0,7,1,0,8,0,0
+3/3/2025,73967150,3/3/2025,Free,Active,Monday,False,0,11,1,0,0,0,0
+3/3/2025,38267184,3/3/2025,Free,Active,Monday,False,0,10,7,1,1,0,0
